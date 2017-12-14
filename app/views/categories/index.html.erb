@@ -1,0 +1,64 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+          
+          
+          <nav aria-label="breadcrumb" role="navigation">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Categories</li>
+            </ol>
+          </nav>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+          <%= link_to "New category",  new_category_path,  :class => "btn btn-sm btn-pill btn-primary ",  style: 'float:right;'%>
+          <h1>All categories</h1>
+          <p>Explore employment opportunities by sector below</p>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+
+          <ul class="list-group">
+           <% @categories.each do |category| %>
+            <li class="list-group-header"><%= link_to category.title, category_path(category) %>
+                 <%= link_to "Delete", category_path(category), :class => "btn btn-xs btn-pill btn-danger",style: 'float:right; margin-left: 10px;', method: :delete  %>
+                 <%= link_to "Edit",  edit_category_path(category),  :class => "btn btn-xs btn-pill btn-warning",  style: 'float:right;'%>
+            </li>
+           <% end %>
+          </ul>
+            
+       
+        
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<%if false %>
+ <% @categories.each do |category| %>
+          <li class = "category_<%= category.id %>">
+            <p><%= link_to category.title, category_path(category) %></p>
+            <%= link_to "Delete", category_path(category), method: :delete  %>
+            <%= link_to "Edit", edit_category_path(category)%>
+          </li>
+        <% end %>
+<%end%>
+        

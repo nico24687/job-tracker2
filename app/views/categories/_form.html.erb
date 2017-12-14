@@ -1,0 +1,6 @@
+<%= form_for (@category) do |f| %>
+  <%= f.label :title  %>
+  <%= f.text_field :title, :class => "form-control" %>
+
+  <%= f.submit 'Create Category ', :class => 'btn btn-sm btn-pill btn-success',style: 'float:right; margin-top: 10px;' %>
+<% end %>

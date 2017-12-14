@@ -1,0 +1,135 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+          
+          
+          <nav aria-label="breadcrumb" role="navigation">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
+              <li class="breadcrumb-item"><a href="/companies">Companies</a></li>
+              <li class="breadcrumb-item"><a href="/companies/<%= @company.id %>/jobs"><%= @company.name%></a></li>
+              <li class="breadcrumb-item active" aria-current="page"><%= @job.title%> </li>
+            </ol>
+          </nav>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+
+        <div class="statcard p-3">
+          <span class="statcard-desc">title</span>
+          <h4 class="statcard-number">
+            <%= @job.title %>
+          </h4>
+        </div>
+
+        <div class="statcard p-3">
+          <span class="statcard-desc">Description</span>
+          <h4 class="statcard-number">
+            <%= @job.description %> 
+          </h4>
+        </div>
+
+        <div class="statcard p-3">
+          <span class="statcard-desc">Level of interest</span>
+          <h4 class="statcard-number">
+            <%= @job.level_of_interest %>
+          </h4>
+        </div>
+
+         <div class="statcard p-3">
+          <span class="statcard-desc">City</span>
+          <h4 class="statcard-number">
+            <%= @job.city %>
+          </h4>
+        </div>
+
+        <div class="statcard p-3">
+          <span class="statcard-desc">Company</span>
+          <h4 class="statcard-number">
+            <%= link_to @job.company.name, company_path(@job.company) %>
+          </h4>
+        </div>
+
+      
+        
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+        
+        <div class="hr-divider">
+          <h3 class="hr-divider-content hr-divider-heading">
+            Comment
+          </h3>
+        </div>
+      
+        
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+        
+         <%= form_for [ @company, @job, @comment] do |f| %>
+            <%= f.label :comment %>
+            <%= f.text_field :content, :class => "form-control" %>
+
+            <%= f.submit 'Create Comment', :class => 'btn btn-sm btn-pill btn-success',style: 'float:right; margin-top: 10px;' %>
+          <% end %>
+        
+        
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+        
+        <div class="hr-divider">
+          <h3 class="hr-divider-content hr-divider-heading">
+            Existing comments
+          </h3>
+          
+        </div>
+      
+        
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+        
+           <% @job.comments.each do |comment| %>
+            <p><div class="well"> <%= comment.content %></div></p>
+            
+           <% end %>
+
+
+        
+        
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+

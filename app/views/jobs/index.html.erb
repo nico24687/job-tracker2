@@ -1,0 +1,118 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+          
+          
+          <nav aria-label="breadcrumb" role="navigation">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
+              <li class="breadcrumb-item"><a href="/companies">Companies</a></li>
+              <li class="breadcrumb-item active" aria-current="page"><%= @company.name%></li>
+            </ol>
+          </nav>
+
+
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+          <%= link_to "Create new job", new_company_job_path(@company),  :class => "btn btn-sm btn-pill btn-success  ",  style: 'float:right;' %>
+
+          <h1><%= @company.name %> jobs </h1> 
+          <p>Browse opportunities by location at <%= @company.name %> below</p>  
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+
+          <ul class = "list-group">
+            <% @jobs.each do |job| %>
+              <li class = "list-group-header">
+                <%=link_to job.title, company_job_path(@company, job) %> in <%= job.city %> || Interest: <%= job.level_of_interest %>
+                <%= link_to "Delete", company_job_path(@company, job), :class => "btn btn-xs btn-pill btn-danger",style: 'float:right; margin-left: 10px;', method: :delete %>
+                <%= link_to "Edit", edit_company_job_path(@company, job), :class => "btn btn-xs btn-pill btn-warning",  style: 'float:right;' %>
+              </li>
+            <% end %>
+          </ul>
+
+
+
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+          <h1>Contacts</h1> 
+          <p>Enter details for a new potential lead at <%= @company.name%> below </p> 
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+        
+        <%= form_for [@company, @contact ] do |f| %>
+          <%= f.label :full_name %>
+          <%= f.text_field :full_name, :class => "form-control" %>
+          <%= f.label :position %>
+          <%= f.text_field :position, :class => "form-control" %>
+          <%= f.label :email %>
+          <%= f.text_field :email, :class => "form-control" %>
+          <%= f.submit 'Create Contact ', :class => 'btn btn-sm btn-pill btn-success',style: 'float:right; margin-top: 10px;' %>
+        <% end %>
+        
+        
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+          </p>Browse your existing network at <%= @company.name%></p>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+
+          <ul class="list-group">
+            <% @company.contacts.each do |contact| %>
+             <li class="list-group-item">
+                <%= contact.full_name %> 
+                <small>(<%= contact.position %>)</small>
+                <span class="list-group-progress" style="width: 100%;"></span>
+              </li>
+            <% end %>
+          </ul>
+
+
+
+
+          
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+          
+          
+          <nav aria-label="breadcrumb" role="navigation">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
+              <li class="breadcrumb-item"><a href="/companies">Companies</a></li>
+              <li class="breadcrumb-item"><a href="/companies"><%= @company.name %></a></li>
+              <li class="breadcrumb-item active" aria-current="page">Edit</li>
+            </ol>
+          </nav>
+
+
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+          <h2><%= @company.name %></h2>  
+          <p>Make your updates to this company below</p>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+
+          <%= render partial: "form" %>
+
+        </div>
+    </div>
+</div>
+
+
+

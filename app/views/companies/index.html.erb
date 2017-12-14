@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+          
+          
+          <nav aria-label="breadcrumb" role="navigation">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Companies</li>
+            </ol>
+          </nav>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+          <%= link_to "Create new company", new_company_path,  :class => "btn btn-sm btn-pill btn-primary ",  style: 'float:right;' %>
+          <h1>All companies</h1>
+          <p>Explore employment opportunities by company below</p>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+          
+          <ul class="list-group">
+            <% @companies.each do |company| %>
+            <li class="list-group-header">
+              <%= link_to company.name, company_path(company) %>: 
+              <%= link_to "Delete", company_path(company),:class => "btn btn-xs btn-pill btn-danger",style: 'float:right; margin-left: 10px;', method: "delete" %>
+              <%= link_to "Edit", edit_company_path(company),  :class => "btn btn-xs btn-pill btn-warning",  style: 'float:right;'   %>
+            </li>
+            <% end %>
+        </ul>
+
+
+
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<% if false %>
+<li class=company_<%= company.id %>
+<% end %>

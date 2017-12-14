@@ -1,0 +1,6 @@
+<%= form_for @company do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, :class => "form-control"  %>
+
+  <%= f.submit 'Create Company ', :class => 'btn btn-sm btn-pill btn-success',style: 'float:right; margin-top: 10px;' %>
+<% end %>

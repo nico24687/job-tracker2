@@ -1,0 +1,176 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+          <nav aria-label="breadcrumb" role="navigation">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+            </ol>
+          </nav>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+          <h1>Dashboard </h1>
+          <p>Explore the data behind your job interests</p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+
+          <div class="hr-divider">
+            <h3 class="hr-divider-content hr-divider-heading">
+              Top three companies by average interest
+            </h3>
+          </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+          <p><p>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+
+         <% @dashboard.top_companies.each do |row| %>
+              <div class="row statcards">
+                <div class="col-sm-6 col-lg-4 m-b">
+                  <div class="statcard statcard-success">
+                    <div class="p-a">
+                      <span class="statcard-desc"><%=row[:company].name %></span>
+                      <h2 class="statcard-number">
+                        <%= row[:level_of_interest] %>
+                       
+                      </h2>
+                      <hr class="statcard-hr m-b-0">
+                    </div>
+                  </div>
+                </div>
+            <% end %>
+
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+
+          <div class="hr-divider">
+            <h3 class="hr-divider-content hr-divider-heading">
+              Jobs by location
+            </h3>
+          </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+          <p><p>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4 col-md-offset-4  ">
+
+          <ul class="list-group">
+          <% @dashboard.job_count_by_location.each do |row| %>
+            <li class="list-group-item"><%= link_to row[:city], jobs_path(location: row[:city])  %> has <%= row[:count] %> jobs</li>
+          <% end %>
+          </ul>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+
+          <div class="hr-divider">
+            <h3 class="hr-divider-content hr-divider-heading">
+              Jobs by interest level
+            </h3>
+          </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+          <p><p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+      
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-4 col-md-4">
+
+          <table class="table table-sm">
+            <thead>
+              <tr>
+                <th scope="col">Count</th>
+                <th scope="col">Interest Level</th>
+              </tr>
+            </thead>
+            <tbody>
+            <% @dashboard.job_count_by_level_of_interest.each do |row| %>
+              <tr>
+                <th scope="row"><%= row[:count] %> </th>
+                <td> <%= row[:level_of_interest] %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
